@@ -49,7 +49,7 @@ const fetchFunc = async (url: string, navigateToLogin: NavigateFunction) => {
             const userStatus: userStatusType = JSON.parse(sessionStorage.getItem("userProfile")!);
             if (userStatus && userStatus.refresh) {
                 try {
-                    const refreshResponse = await axios.post("http://127.0.0.1:8000/token-refresh/", { refresh: userStatus.refresh });
+                    const refreshResponse = await axios.post("https://justchat-api.onrender.com/token-refresh/", { refresh: userStatus.refresh });
                     if (refreshResponse.status === 200) {
                         userStatus.access = refreshResponse.data.access;
                         sessionStorage.setItem("userProfile", JSON.stringify(userStatus));
@@ -111,7 +111,7 @@ const Friend = ({showMessageBox, friend}: propType) => {
     const paraRef = useRef<HTMLParagraphElement>(null!)
     const {data: messages, isSuccess} = useQuery({
         queryKey: ["messages", friend.id],
-        queryFn: () => fetchFunc(`http://127.0.0.1:8000/api/users/${friend.id}/get_user_and_frnd_msgs/`, navigateToLogin),
+        queryFn: () => fetchFunc(`https://justchat-api.onrender.com/api/users/${friend.id}/get_user_and_frnd_msgs/`, navigateToLogin),
        // initialData: () => queryClient.getQueryData(["messages", friend.id]),
         refetchInterval: 2500,
         cacheTime: 0,
@@ -129,7 +129,7 @@ const Friend = ({showMessageBox, friend}: propType) => {
         last_date_online: friend.last_date_online ? friend.last_date_online : null,
         messages: messages ? messages : [],
     }
-    useStore.setState({groupProfile: null, apiUrl: `http://127.0.0.1:8000/api/users/${friend.id}/send_message_to_friend/`});
+    useStore.setState({groupProfile: null, apiUrl: `https://justchat-api.onrender.com/api/users/${friend.id}/send_message_to_friend/`});
     setFriendProfile(profile)
     console.log("PROFILE MESSAGES", profile.messages)
     }
@@ -170,7 +170,7 @@ const Friend = ({showMessageBox, friend}: propType) => {
 
 
         if (friend.id) {
-          const messageWebsocket = new WebSocket(`ws://127.0.0.1:8000/ws/chat/${friend.id}/?access=${access}`);
+          const messageWebsocket = new WebSocket(`wss://justchat-api.onrender.com/ws/chat/${friend.id}/?access=${access}`);
           messageWebsocket.onopen = () => {
           console.log("connected successfully")
           }

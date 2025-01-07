@@ -45,7 +45,7 @@ const fetchFunc = async (url: string, data: GroupType) => {
             const userStatus: userStatusType = JSON.parse(sessionStorage.getItem("userProfile")!);
             if (userStatus && userStatus.refresh) {
                 try {
-                    const refreshResponse = await axios.post("http://127.0.0.1:8000/token-refresh/", { refresh: userStatus.refresh });
+                    const refreshResponse = await axios.post("https://justchat-api.onrender.com/token-refresh/", { refresh: userStatus.refresh });
                     if (refreshResponse.status === 200) {
                         userStatus.access = refreshResponse.data.access;
                         sessionStorage.setItem("userProfile", JSON.stringify(userStatus));
@@ -115,7 +115,7 @@ const CreateGroup = () => {
     })
 
     const postGroup = useMutation({
-        mutationFn: () =>  fetchFunc("http://127.0.0.1:8000/api/users/create_group/", group),
+        mutationFn: () =>  fetchFunc("https://justchat-api.onrender.com/api/users/create_group/", group),
         onMutate: () => {
             createButtonRef.current.disabled = true;
             createButtonRef.current.textContent = "Creating ...";
@@ -138,7 +138,7 @@ const CreateGroup = () => {
     })
 
 
-    const {data: friends, isError, isLoading} = UseRequest("http://127.0.0.1:8000/api/users/get_friends/",  "friends");
+    const {data: friends, isError, isLoading} = UseRequest("https://justchat-api.onrender.com/api/users/get_friends/",  "friends");
 
     const createGroup = () => {
         if (validateGroup()) {

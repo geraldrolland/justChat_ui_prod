@@ -36,7 +36,7 @@ export const OtpVarification = () => {
     const userDetails = JSON.parse(sessionStorage.getItem("userDetails")!)
     setisResendOtp(false)
     if (userDetails) {
-      axios.post("http://127.0.0.1:8000/api/users/verify_email/", {email: userDetails.email})
+      axios.post("https://justchat-api.onrender.com/api/users/verify_email/", {email: userDetails.email})
       .catch((error) => {
         console.log(error)
       })
@@ -53,12 +53,12 @@ export const OtpVarification = () => {
       buttonRef.current.classList.remove("bg-green-500")
       buttonRef.current.classList.add("bg-green-300")
       const userDetails: {username: string, email: string, password: string}  = JSON.parse(sessionStorage.getItem("userDetails")!)
-      axios.post("http://127.0.0.1:8000/api/users/verify_otp/", {otpCode, email: userDetails.email})
+      axios.post("https://justchat-api.onrender.com/api/users/verify_otp/", {otpCode, email: userDetails.email})
       .then(response => {
         if (response.status === 200) {
           const userDetails = JSON.parse(sessionStorage.getItem("userDetails")!)
           if (userDetails) {
-            axios.post("http://127.0.0.1:8000/api/users/create_user/", userDetails)
+            axios.post("https://justchat-api.onrender.com/api/users/create_user/", userDetails)
             .then(response => {
               if (response.status === 201) {
                 sessionStorage.setItem("userProfile", JSON.stringify(response.data))

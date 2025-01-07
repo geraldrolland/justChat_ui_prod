@@ -13,7 +13,7 @@ const onGoogleLoginSuccess = () => {
   const params = {
     response_type: 'code',
     client_id: "647424373109-0cs76iiqksock5rg4pk5mblebeik91cm.apps.googleusercontent.com",
-    redirect_uri: "http://localhost:8000/api/google/google_login/",
+    redirect_uri: "https://justchat-api.onrender.com/api/google/google_login/",
     prompt: 'select_account',
     access_type: 'offline',
     scope

@@ -53,7 +53,7 @@ const SignUp = () => {
       signUpButtonRef.current?.classList.remove("bg-green-500")
       signUpButtonRef.current?.classList.add("bg-green-300")
       setIsDisable(true)
-      axios.post("http://127.0.0.1:8000/api/users/verify_email/", {email: userDetails.email})
+      axios.post("https://justchat-api.onrender.com/api/users/verify_email/", {email: userDetails.email})
       .then((response) => {
         if (response.status === 200) {
           setIsDisable(false)

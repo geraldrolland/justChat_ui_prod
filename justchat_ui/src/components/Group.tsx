@@ -53,7 +53,7 @@ const fetchFunc = async (url: string, navigateToLogin: NavigateFunction) => {
             const userStatus: userStatusType = JSON.parse(sessionStorage.getItem("userProfile")!);
             if (userStatus && userStatus.refresh) {
                 try {
-                    const refreshResponse = await axios.post("http://127.0.0.1:8000/token-refresh/", { refresh: userStatus.refresh });
+                    const refreshResponse = await axios.post("https://justchat-api.onrender.com/token-refresh/", { refresh: userStatus.refresh });
                     if (refreshResponse.status === 200) {
                         userStatus.access = refreshResponse.data.access;
                         sessionStorage.setItem("userProfile", JSON.stringify(userStatus));
@@ -104,7 +104,7 @@ const Group = ({showMessageBox, group}: propType) => {
     const paraRef = useRef<HTMLParagraphElement>(null!)
     const {data: groupMessages, isSuccess} = useQuery({
         queryKey: ["messages", group?.group_id],
-        queryFn: () => fetchFunc(`http://127.0.0.1:8000/api/users/${group?.group_id}/get_user_and_group_msgs/`, navigateToLogin),
+        queryFn: () => fetchFunc(`https://justchat-api.onrender.com/api/users/${group?.group_id}/get_user_and_group_msgs/`, navigateToLogin),
        // initialData: () => queryClient.getQueryData(["messages", friend.id]),
         refetchInterval: 2500,
         cacheTime: 0,
@@ -121,7 +121,7 @@ const Group = ({showMessageBox, group}: propType) => {
         messages: groupMessages ? groupMessages : [],
     }
     
-    useStore.setState({friendProfile: null, groupProfile, apiUrl: `http://127.0.0.1:8000/api/users/${group?.group_id}/send_message_to_group/`});
+    useStore.setState({friendProfile: null, groupProfile, apiUrl: `https://justchat-api.onrender.com/api/users/${group?.group_id}/send_message_to_group/`});
 
     }
 
@@ -146,7 +146,7 @@ const Group = ({showMessageBox, group}: propType) => {
     useEffect(() => {
         const {access} = JSON.parse(sessionStorage.getItem("userProfile")!);
         if (group?.group_id) {
-            const messageWebsocket = new WebSocket(`ws://127.0.0.1:8000/ws/groupchat/${group.group_id}/?access=${access}`);
+            const messageWebsocket = new WebSocket(`wss://justchat-api.onrender.com/ws/groupchat/${group.group_id}/?access=${access}`);
             messageWebsocket.onopen = () => {
             console.log("connected successfully")
             }

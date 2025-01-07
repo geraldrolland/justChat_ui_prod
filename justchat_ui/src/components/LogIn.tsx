@@ -51,7 +51,7 @@ const LogIn = () => {
       buttonRef.current?.classList.remove("bg-green-500")
       setIsDisable(true)
       console.log("error")
-      axios.post("http://127.0.0.1:8000/api/users/login_user/", userLoginInput)
+      axios.post("https://justchat-api.onrender.com/api/users/login_user/", userLoginInput)
       .then((response) => {
         if (response.status === 200) {
           sessionStorage.setItem("userProfile", JSON.stringify(response.data))
@@ -104,12 +104,6 @@ const LogIn = () => {
           </div>
         </div>
         <div className="md:w-[100%] ml-[2.5%] md:ml-0 w-[95%] min-h-[50px] flex justify-between items-center">
-          <div className="w-[170px] h-[100%] mt-4 flex justify-between items-center">
-            <div className="w-[50px] px-[1px] h-[25px] bg-gray-300 rounded-full flex items-center">
-              <div className="w-[23px] cursor-pointer h-[23px] bg-gray-100 rounded-full"></div>
-            </div>
-            <h1 className="text-gray-700 font-poppins text-[14px]">Remember me</h1>
-          </div>
           <NavLink to={"/forgot-password"} className="text-muli block mt-3 italic text-red-400">Recover password</NavLink>
         </div>
         <button ref={buttonRef} onClick={() => handleUserLogin()} disabled={isDisbale} className="md:w-[100%] w-[95%] md:ml-0 ml-[2.5%]  min-h-[50px] transform duration-300 transition-all hover:scale-105 active:scale-95 rounded-md bg-green-300 mt-4 capitalize text-gray-100 font-poppins">Sign in</button>

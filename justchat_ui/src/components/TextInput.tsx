@@ -72,7 +72,7 @@ const fetchFunc = async (url: string, data: messageType,  navigateToLogin: any) 
           const userStatus: userStatusType = JSON.parse(sessionStorage.getItem("userProfile")!);
           if (userStatus && userStatus.refresh) {
               try {
-                  const refreshResponse = await axios.post("http://127.0.0.1:8000/token-refresh/", { refresh: userStatus.refresh });
+                  const refreshResponse = await axios.post("https://justchat-api.onrender.com/token-refresh/", { refresh: userStatus.refresh });
                   if (refreshResponse.status === 200) {
                       userStatus.access = refreshResponse.data.access;
                       sessionStorage.setItem("userProfile", JSON.stringify(userStatus));

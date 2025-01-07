@@ -63,8 +63,8 @@ type groupType = {
 export const hideContext = React.createContext<hideContextType>(null!)
 const Home = () => {
   const {mutate} = useContext(logoutContext)
-  const response = UseRequest("http://127.0.0.1:8000/api/users/get_friends/",  "friends");
-  const {data: groups} = UseRequest("http://127.0.0.1:8000/api/users/get_groups/",  "groups");
+  const response = UseRequest("https://justchat-api.onrender.com/api/users/get_friends/",  "friends");
+  const {data: groups} = UseRequest("https://justchat-api.onrender.com/api/users/get_groups/",  "groups");
   const showMessgaeBox = () => {
     const messageBox = document.getElementById("message-box")
     messageBox?.classList.add("z-30")
@@ -93,7 +93,7 @@ const Home = () => {
     const userStatus = JSON.parse(sessionStorage.getItem("userProfile")!)
     const token = userStatus.access
     
-    const isUserOnlineWebsocket = new WebSocket(`ws://127.0.0.1:8000/ws/isuseronline/?access=${token}`)
+    const isUserOnlineWebsocket = new WebSocket(`wss://justchat-api.onrender.com/ws/isuseronline/?access=${token}`)
     isUserOnlineWebsocket.onopen = () => {
       console.log("user connected succcessfully")
     }
