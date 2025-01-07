@@ -50,7 +50,7 @@ const logoutFunc = async (url: string, navigateToLogin: any) => {
           const userStatus: userStatusType = JSON.parse(sessionStorage.getItem("userProfile")!);
           if (userStatus && userStatus.refresh) {
               try {
-                  const refreshResponse = await axios.post("http://127.0.0.1:8000/token-refresh/", { refresh: userStatus.refresh });
+                  const refreshResponse = await axios.post("https://justchat-api.onrender.com/token-refresh/", { refresh: userStatus.refresh });
                   if (refreshResponse.status === 200) {
                       userStatus.access = refreshResponse.data.access;
                       sessionStorage.setItem("userProfile", JSON.stringify(userStatus));
@@ -85,7 +85,7 @@ function App() {
   const messageWebsocket = useStore(state =>  state.messageWebsocket)
   const navigateToLogin = useNavigate()
   const logoutMutate = useMutation({
-    mutationFn: () => logoutFunc("http://127.0.0.1:8000/api/users/logout_user/", navigateToLogin),
+    mutationFn: () => logoutFunc("https://justchat-api.onrender.com/api/users/logout_user/", navigateToLogin),
   })
 
 
