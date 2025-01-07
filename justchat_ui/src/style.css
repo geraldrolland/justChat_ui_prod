@@ -1,0 +1,9 @@
+/* styles.css */
+.tab-container {
+    -ms-overflow-style: none;   /* Internet Explorer and Edge */
+    scrollbar-width: none;      /* Firefox */
+  }
+  
+  .tab-container::-webkit-scrollbar {
+    display: none;  /* Chrome, Safari, and Opera */
+  }
