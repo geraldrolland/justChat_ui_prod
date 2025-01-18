@@ -15,7 +15,7 @@ The frontend provides a modern and responsive interface with the following featu
 - **Responsive Design**: Optimized for all devices.
 
 ## Technologies Used
-- **React**: For building the user interface.
+- **React**: This was heavily used in building the user interface.
 - **TypeScript**: Ensures type safety in the codebase.
 - **Tailwind CSS**: A utility-first CSS framework for rapid design.
 
