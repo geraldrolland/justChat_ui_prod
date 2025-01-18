@@ -9,7 +9,7 @@ Email: bonanwaeze@gmail.com
 ## Features
 The frontend provides a modern and responsive interface with the following features:
 - **User Authentication**: Integration with the backend for secure logins and signups.
-- **Real-Time Communication**: Send and receive messages instantly.
+- **Real-Time Communication**: one ca send and receive messages instantly.
 - **File Sharing**: Share PDFs, images, and voice notes seamlessly.
 - **Group Chats**: Create and manage group chats with ease.
 - **Responsive Design**: Optimized for all devices.
