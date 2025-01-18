@@ -11,7 +11,7 @@ The frontend provides a modern and responsive interface with the following featu
 - **User Authentication**: This Integration helps establish secure logins and signups with the backend.
 - **Real-Time Communication**: One is able to send and receive messages instantly.
 - **File Sharing**: Share PDFs, images, and voice notes seamlessly.
-- **Group Chats**: Create and manage group chats with ease.
+- **Group Chats**: Create and manage group chats easily.
 - **Responsive Design**: Optimized for all devices.
 
 ## Technologies Used
