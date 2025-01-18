@@ -49,7 +49,7 @@ Sign up or log in using your credentials.
 
 Start chatting, sharing files, or creating group chats.
 
-###Contributing
+### Contributing
 We welcome contributions! 
 
 To contribute:
