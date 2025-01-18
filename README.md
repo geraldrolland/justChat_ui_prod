@@ -20,7 +20,7 @@ The frontend provides a modern and responsive interface with the following featu
 - **Tailwind CSS**: A utility-first CSS framework for rapid design.
 
 ## Installation
-Follow these steps to set up the frontend locally:
+Follow these steps to set up the frontend app locally:
 
 ### Prerequisites
 - **Node.js**: v14+
